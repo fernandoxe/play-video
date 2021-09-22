@@ -16,7 +16,7 @@ export const SeasonList = (props) => {
   return (
     <Container>
       <ul className="season">
-        {episodes.map(episode => <li className="season__episode">{episode.name}</li>)}
+        {episodes.map(episode => <li key={episode.name} className="season__episode">{episode.description}</li>)}
       </ul>
     </Container>
   );
