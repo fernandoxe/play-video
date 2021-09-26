@@ -1,17 +1,16 @@
-import { series } from '../data';
-import { SeasonList } from '../components/SeasonList';
+import { series, movies } from '../data';
 import { SeriesList } from '../components/SeriesList';
+import { MoviesList } from '../components/MoviesList/MoviesList';
 
 const seriesName = 'Loki';
 
 export const Home = () => {
-  const episodes = series[0].episodes;
   const seriesFiltered = series.filter(season => season.name === seriesName);
   return (
     <>
       <h1>Home page</h1>
       <SeriesList series={seriesFiltered} />
-      <SeasonList episodes={episodes} />
+      <MoviesList movies={movies} />
     </>
   );
 };
