@@ -1,6 +1,6 @@
-import { series, movies } from '../data';
-import { SeriesList } from '../components/SeriesList';
-import { MoviesList } from '../components/MoviesList/MoviesList';
+import { series, movies } from '../../data';
+import { SeriesList } from '../../components/SeriesList';
+import { MoviesList } from '../../components/MoviesList';
 
 const seriesName = 'Loki';
 

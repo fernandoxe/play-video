@@ -1,10 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   .movies {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
   }
 `;
 
@@ -13,7 +11,11 @@ export const MoviesList = (props) => {
   return (
     <Container>
       <ul className="movies">
-        {movies.map(movie => <li key={movie.name}>{movie.description}</li>)}
+        {movies.map(movie =>
+          <li key={movie.name}>
+            <Link to={`/movies/${movie.name}`}>{movie.description}</Link>
+          </li>
+        )}
       </ul>
     </Container>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SeasonList } from '.';
+import { SeasonList } from '../../pages/Season';
 
 export default {
   title: 'Components/SeasonList',
