@@ -2,12 +2,6 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   .season {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    &__episode {
-
-    }
   }
 `;
 
