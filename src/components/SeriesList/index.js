@@ -13,7 +13,7 @@ export const SeriesList = (props) => {
       <ul className="seasons">
         {series.map(season =>
           <li key={season.season}>
-            <Link to={`/${season.name}`}>{season.name} season {season.season}</Link>
+            <Link to={`/series/${season.name}`}>{season.name} season {season.season}</Link>
           </li>
         )}
       </ul>

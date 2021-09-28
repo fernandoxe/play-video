@@ -13,7 +13,7 @@ export const MoviesList = (props) => {
       <ul className="movies">
         {movies.map(movie =>
           <li key={movie.name}>
-            <Link to={`/movies/${movie.name}`}>{movie.description}</Link>
+            <Link to={`/movie/${movie.name}`}>{movie.description}</Link>
           </li>
         )}
       </ul>
