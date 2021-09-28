@@ -8,12 +8,18 @@ const Container = styled.div`
   }
 `;
 
-export const Season = (props) => {
+export const Series = (props) => {
   const { series } = useParams();
-  const episodes = seriesData.filter(s => s.name === series);
+  const seasons = seriesData.filter(s => s.name === series);
   return (
     <Container>
-      <SeasonList episodes={episodes} />
+      <ul>
+        {seasons.map(season =>
+          <li key={season.season}>
+            <SeasonList season={season} />
+          </li>
+        )}  
+      </ul>
     </Container>
   );
 }
