@@ -1,21 +1,23 @@
 import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { Video } from '../../components/Video';
+import { getMovie, getEpisode } from '../../services';
 
 const Container = styled.div`
 `;
 
 export const Player = (props) => {
   const { movie, series, season, episode } = useParams();
-  console.log(series);
+  const movieData = movie && getMovie(movie);
+  const episodeData = series && getEpisode(series, season, episode);
 
   return (
     <Container>
-      {movie &&
-        <Video url={`movie ${movie}`} />
+      {movie && movieData &&
+        <Video name={movieData.name} />
       }
-      {series &&
-        <Video url={`series ${series} ${season} ${episode}`} />
+      {series && episodeData &&
+        <Video name={episodeData.name} />
       }
     </Container>
   );
