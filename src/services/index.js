@@ -11,3 +11,7 @@ export const getEpisode = (seriesName, seasonNumber, episodeNumber) => {
   const episode = season.episodes[episodeNumber - 1];
   return episode;
 };
+
+export const getSeasons = (seriesName) => {
+  return series.filter(s => s.name === seriesName);
+};

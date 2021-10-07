@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
-import { series as seriesData } from '../../data';
 import { SeasonList } from '../../components/SeasonList';
 import styled from 'styled-components';
+import { getSeasons } from '../../services';
 
 const Container = styled.div`
   .season {
@@ -10,7 +10,7 @@ const Container = styled.div`
 
 export const Series = (props) => {
   const { series } = useParams();
-  const seasons = seriesData.filter(s => s.name === series);
+  const seasons = getSeasons(series);
   return (
     <Container>
       <ul>
