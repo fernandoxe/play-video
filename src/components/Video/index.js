@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+const mediaUrl = process.env.REACT_APP_MEDIA_URL;
 
 const Container = styled.div`
   .video {
@@ -8,13 +9,14 @@ const Container = styled.div`
 
 export const Video = (props) => {
   const { name } = props;
+
   return (
     <Container>
       <h1>Video {name}</h1>
-      <video className="video">
-        <source src={`/media/${name}.mp4`} type="video/mp4" />
-        <track src={`/media/${name}_es.vtt`} kind="subtitles" srcLang="es"/>
-        <track src={`/media/${name}_en.vtt`} kind="subtitles" srcLang="en"/>
+      <video className="video" controls>
+        <source src={`${mediaUrl}/media/${name}.mp4`} type="video/mp4" />
+        <track src={`${mediaUrl}/media/${name}.vtt`} default kind="subtitles" srcLang="es"/>
+        <track src={`${mediaUrl}/media/${name}_en.vtt`} kind="subtitles" srcLang="en"/>
       </video>
     </Container>
   );
