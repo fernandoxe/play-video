@@ -4,6 +4,16 @@ const mediaUrl = process.env.REACT_APP_MEDIA_URL;
 const Container = styled.div`
   .video {
     width: 100%;
+
+    ::cue {
+      background: transparent;
+      text-shadow:
+        1px 1px 3px #000,
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    }
   }
 `;
 
