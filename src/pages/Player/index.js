@@ -4,6 +4,8 @@ import { Video } from '../../components/Video';
 import { getMovie, getEpisode } from '../../services';
 
 const Container = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 export const Player = (props) => {
