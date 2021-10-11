@@ -12,6 +12,7 @@ const Container = styled.div`
 
     video {
       width: 100%;
+      outline: 0;
 
       ::cue {
         background: transparent;
