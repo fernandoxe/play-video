@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
+import { socketConnect } from '../../services';
 const mediaUrl = process.env.REACT_APP_MEDIA_URL;
 
 const Container = styled.div`
@@ -29,6 +31,10 @@ const Container = styled.div`
 
 export const Video = (props) => {
   const { name } = props;
+
+  useEffect(() => {
+    const socket = socketConnect();
+  }, [])
 
   return (
     <Container>
