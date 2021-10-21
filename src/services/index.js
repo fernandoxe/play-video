@@ -1,4 +1,5 @@
 import { movies, series } from '../data';
+import { io } from 'socket.io-client';
 
 export const getMovie = (movieName) => {
   const movie = movies.find(movie => movie.name === movieName);
@@ -14,4 +15,8 @@ export const getEpisode = (seriesName, seasonNumber, episodeNumber) => {
 
 export const getSeasons = (seriesName) => {
   return series.filter(s => s.name === seriesName);
+};
+
+export const socketConnect = () => {
+  return io('http://localhost:5000');
 };
