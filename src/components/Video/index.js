@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { socketConnect } from '../../services';
 const mediaUrl = process.env.REACT_APP_MEDIA_URL;
@@ -31,15 +31,31 @@ const Container = styled.div`
 
 export const Video = (props) => {
   const { name } = props;
+  const videoRef = useRef(null);
+  const socket = useRef(null);
 
   useEffect(() => {
-    const socket = socketConnect();
-  }, [])
+    socket.current = socketConnect();
+  }, []);
+
+  const handlePlay = () => {
+    console.log('play at', videoRef.current.currentTime);
+    socket.current?.emit('play', videoRef.current.currentTime);
+  };
+
+  const handlePause = () => {
+    socket.current?.emit('pause', videoRef.current.currentTime);
+  };
 
   return (
     <Container>
       <div className="video">
-        <video controls>
+        <video
+          controls
+          ref={videoRef}
+          onPlay={handlePlay}
+          onPause={handlePause}
+        >
           <source src={`${mediaUrl}/media/${name}.mp4`} type="video/mp4" />
           <track src={`${mediaUrl}/media/${name}.vtt`} default kind="subtitles" srcLang="es"/>
           <track src={`${mediaUrl}/media/${name}_en.vtt`} kind="subtitles" srcLang="en"/>
