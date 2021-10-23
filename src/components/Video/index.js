@@ -44,7 +44,12 @@ export const Video = (props) => {
   };
 
   const handlePause = () => {
+    console.log('pause at', videoRef.current.currentTime);
     socket.current?.emit('pause', videoRef.current.currentTime);
+  };
+  
+  const handleSeeked = () => {
+    console.log('seeked');
   };
 
   return (
@@ -55,6 +60,7 @@ export const Video = (props) => {
           ref={videoRef}
           onPlay={handlePlay}
           onPause={handlePause}
+          onSeeked={handleSeeked}
         >
           <source src={`${mediaUrl}/media/${name}.mp4`} type="video/mp4" />
           <track src={`${mediaUrl}/media/${name}.vtt`} default kind="subtitles" srcLang="es"/>
