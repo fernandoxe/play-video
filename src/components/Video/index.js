@@ -49,7 +49,8 @@ export const Video = (props) => {
   };
   
   const handleSeeked = () => {
-    console.log('seeked');
+    console.log('seeked', videoRef.current.currentTime);
+    socket.current?.emit('seeked', videoRef.current.currentTime);
   };
 
   return (
