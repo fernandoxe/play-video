@@ -36,6 +36,9 @@ export const Video = (props) => {
 
   useEffect(() => {
     socket.current = socketConnect();
+    socket.current.on('paused', (time) => {
+      console.log('paused at', time);
+    })
   }, []);
 
   const handlePlay = () => {
