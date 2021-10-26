@@ -36,10 +36,25 @@ export const Video = (props) => {
 
   useEffect(() => {
     socket.current = socketConnect();
+
     socket.current.on('paused', (time) => {
       console.log('paused at', time);
-    })
+      pause();
+    });
+
+    socket.current.on('played', (time) => {
+      console.log('played at', time);
+      play();
+    });
   }, []);
+
+  const pause = () => {
+    videoRef.current.pause();
+  };
+
+  const play = () => {
+    videoRef.current.play();
+  };
 
   const handlePlay = () => {
     console.log('play at', videoRef.current.currentTime);
@@ -47,7 +62,7 @@ export const Video = (props) => {
   };
 
   const handlePause = () => {
-    console.log('pause at', videoRef.current.currentTime);
+    console.log('pause at', videoRef.current.currentTime, videoRef.current.paused);
     socket.current?.emit('pause', videoRef.current.currentTime);
   };
   
