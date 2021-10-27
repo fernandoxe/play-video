@@ -46,6 +46,11 @@ export const Video = (props) => {
       console.log('played at', time);
       play();
     });
+
+    socket.current.on('seek', (time) => {
+      console.log('seek at', time);
+      changeTime(time);
+    });
   }, []);
 
   const pause = () => {
@@ -54,6 +59,10 @@ export const Video = (props) => {
 
   const play = () => {
     videoRef.current.play();
+  };
+
+  const changeTime = (time) => {
+    videoRef.current.currentTime = time;
   };
 
   const handlePlay = () => {
