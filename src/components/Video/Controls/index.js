@@ -3,6 +3,37 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  .range {
+    width: 100%;
+    appearance: none;
+
+    ::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background-color: gray;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    ::-moz-range-thumb {
+      background-color: blue;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    ::-webkit-slider-runnable-track {
+      background-color: lightblue;
+      height: 8px;
+    }
+
+    ::-moz-range-track {
+      background-color: lightblue;
+      height: 8px;
+    }
+  }
 `;
 
 export const Controls = props => {
@@ -33,6 +64,7 @@ export const Controls = props => {
     <Container>
       <input
         type="range"
+        className="range"
         ref={rangeRef}
       />
     </Container>
