@@ -1,50 +1,61 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  position: relative;
+
   .range {
     width: 100%;
     appearance: none;
+    background-color: transparent;
+    margin: 0;
 
     ::-webkit-slider-thumb {
       -webkit-appearance: none;
-      background-color: gray;
       width: 16px;
       height: 16px;
       border-radius: 50%;
+      background-color: gray;
       cursor: pointer;
     }
 
     ::-moz-range-thumb {
-      background-color: blue;
+      appearance: none;
       width: 16px;
       height: 16px;
       border-radius: 50%;
+      background-color: gray;
       cursor: pointer;
     }
+  }
 
-    ::-webkit-slider-runnable-track {
-      background-color: lightblue;
-      height: 8px;
-    }
+  .range, .rail, .progress {
+    position: absolute;
+    height: 4px;
+  }
 
-    ::-moz-range-track {
-      background-color: lightblue;
-      height: 8px;
-    }
+  .rail {
+    width: 100%;
+    background-color: lightgray;
+  }
+
+  .progress {
+    background-color: purple;
   }
 `;
 
 export const Controls = props => {
   // const {} = props;
   const rangeRef = useRef(null);
+  const [progress, setProgress] = useState(0);
 
   const handleChange = (event) => {
     console.log('change', event.target.value);
   };
 
   const handleInput = (event) => {
+    setProgress(event.target.value);
     console.log('input', event.target.value);
   };
 
@@ -62,10 +73,13 @@ export const Controls = props => {
 
   return (
     <Container>
+      <div className="rail"></div>
+      <div className="progress" style={{width: `${progress}%`}}></div>
       <input
         type="range"
         className="range"
         ref={rangeRef}
+        value={progress}
       />
     </Container>
   );
