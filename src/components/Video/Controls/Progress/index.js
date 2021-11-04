@@ -50,13 +50,11 @@ export const Progress = props => {
   const [progress, setProgress] = useState(0);
 
   const handleChange = (event) => {
-    console.log('change', event.target.value);
     props.onChange?.(event.target.value);
   };
 
   const handleInput = (event) => {
     setProgress(event.target.value);
-    console.log('input', event.target.value);
     props.onInput?.(event.target.value);
   };
 
@@ -75,12 +73,14 @@ export const Progress = props => {
   return (
     <Container>
       <div className="rail"></div>
-      <div className="progress" style={{width: `${progress}%`}}></div>
+      <div className="progress" style={{width: `${progress * 100 / props.max}%`}}></div>
       <input
         type="range"
         className="range"
         ref={rangeRef}
         value={progress}
+        min={props.min}
+        max={props.max}
       />
     </Container>
   );
