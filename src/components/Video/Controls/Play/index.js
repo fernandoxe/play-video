@@ -5,8 +5,13 @@ const Container = styled.div`
   .button {
     border: none;
     border-radius: 50%;
+    width: 13vw;
+    height: 13vw;
+    background-color: fuchsia;
+    opacity: 0.5;
     i {
-      color: fuchsia;
+      font-size: 7rem;
+      color: #fff;
     }
   }
 `;
