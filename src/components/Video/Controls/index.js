@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 export const Controls = props => {
-  // const {} = props;
+  const { currentTime, duration} = props;
 
   const handleInput = value => {
     console.log('input', value);
@@ -27,10 +27,10 @@ export const Controls = props => {
   return (
     <Container>
       <Play onClick={handlePlay} />
-      <Timer currentTime={0} duration={1200} />
+      <Timer currentTime={currentTime} duration={duration} />
       <Progress
         min={0}
-        max={1200}
+        max={duration}
         onInput={handleInput}
         onChange={handleChange}
       />
