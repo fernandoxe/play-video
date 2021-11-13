@@ -24,10 +24,15 @@ export const Controls = props => {
     console.log('play', value);
   };
 
+  const handleSubtitlesClick = () => {
+    console.log('subtitles');
+  };
+
   return (
     <Container>
       <Play onClick={handlePlay} />
       <Timer currentTime={currentTime} duration={duration} />
+      <button className="subtitles" onClick={handleSubtitlesClick}></button>
       <Progress
         min={0}
         max={duration}
