@@ -28,11 +28,20 @@ export const Controls = props => {
     console.log('subtitles');
   };
 
+  const handleFullscreenClick = () => {
+    console.log('fullscreen');
+  };
+
   return (
     <Container>
       <Play onClick={handlePlay} />
       <Timer currentTime={currentTime} duration={duration} />
-      <button className="subtitles" onClick={handleSubtitlesClick}></button>
+      <button className="subtitles" onClick={handleSubtitlesClick}>
+
+      </button>
+      <button className="fullscreen" onClick={handleFullscreenClick}>
+
+      </button>
       <Progress
         min={0}
         max={duration}
