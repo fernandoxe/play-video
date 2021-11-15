@@ -32,10 +32,17 @@ export const Controls = props => {
     console.log('fullscreen');
   };
 
+  const handleConnectClick = () => {
+    console.log('connect');
+  };
+
   return (
     <Container>
       <Play onClick={handlePlay} />
       <Timer currentTime={currentTime} duration={duration} />
+      <button className="connect" onClick={handleConnectClick}>
+
+      </button>
       <button className="subtitles" onClick={handleSubtitlesClick}>
 
       </button>
