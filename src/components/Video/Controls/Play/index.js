@@ -17,12 +17,12 @@ const Container = styled.div`
 `;
 
 export const Play = props => {
-  const [active, setActive] = useState(false);
+  const [play, setPlay] = useState(false);
 
   const handleClick = () => {
-    const newActive = !active;
-    setActive(newActive);
-    props.onClick?.(newActive);
+    const newPlay = !play;
+    setPlay(newPlay);
+    props.onClick?.(newPlay);
   };
 
   return (
