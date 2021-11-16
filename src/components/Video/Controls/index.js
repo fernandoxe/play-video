@@ -10,7 +10,9 @@ const Container = styled.div`
 `;
 
 export const Controls = props => {
-  const { currentTime, duration} = props;
+  const {currentTime, duration} = props;
+
+  const [play, setPlay] = useState(false);
 
   const handleInput = value => {
     console.log('input', value);
@@ -22,6 +24,8 @@ export const Controls = props => {
 
   const handlePlay = value => {
     console.log('play', value);
+    setPlay(value);
+    props.onPlay?.(value);
   };
 
   const handleSubtitlesClick = () => {
