@@ -16,6 +16,7 @@ export const Controls = props => {
 
   const handleInput = value => {
     console.log('input', value);
+    props.onProgressInput?.(value);
   };
 
   const handleChange = value => {
