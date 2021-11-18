@@ -21,6 +21,7 @@ export const Controls = props => {
 
   const handleChange = value => {
     console.log('change', value);
+    props.onProgressChange?.(value);
   };
 
   const handlePlay = value => {
