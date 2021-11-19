@@ -50,7 +50,7 @@ export const Controls = props => {
 
       </button>
       <button className="subtitles" onClick={handleSubtitlesClick}>
-
+        <i className="material-icons">subtitles</i>
       </button>
       <button className="fullscreen" onClick={handleFullscreenClick}>
 
