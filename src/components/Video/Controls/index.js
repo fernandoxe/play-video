@@ -47,7 +47,7 @@ export const Controls = props => {
       <Play onClick={handlePlay} />
       <Timer currentTime={currentTime} duration={duration} />
       <button className="connect" onClick={handleConnectClick}>
-
+      <i className="material-icons">people</i>
       </button>
       <button className="subtitles" onClick={handleSubtitlesClick}>
         <i className="material-icons">subtitles</i>
