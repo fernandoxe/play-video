@@ -34,8 +34,9 @@ export const Controls = props => {
     console.log('subtitles');
   };
 
-  const handleFullscreenClick = () => {
+  const handleFullscreenClick = (value) => {
     console.log('fullscreen');
+    props.onFullscreenClick?.(value);
   };
 
   const handleConnectClick = () => {
