@@ -30,8 +30,9 @@ export const Controls = props => {
     props.onPlay?.(value);
   };
 
-  const handleSubtitlesClick = () => {
+  const handleSubtitlesClick = (value) => {
     console.log('subtitles');
+    props.onSubtitleClick(value);
   };
 
   const handleFullscreenClick = (value) => {
