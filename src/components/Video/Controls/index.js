@@ -13,6 +13,7 @@ export const Controls = props => {
   const {currentTime, duration} = props;
 
   const [play, setPlay] = useState(false);
+  const [subtitles, setSubtitles] = useState(false);
 
   const handleInput = value => {
     console.log('input', value);
@@ -32,6 +33,7 @@ export const Controls = props => {
 
   const handleSubtitlesClick = (value) => {
     console.log('subtitles');
+    setSubtitles(value);
     props.onSubtitleClick(value);
   };
 
