@@ -14,6 +14,7 @@ export const Controls = props => {
 
   const [play, setPlay] = useState(false);
   const [subtitles, setSubtitles] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
 
   const handleInput = value => {
     console.log('input', value);
@@ -39,6 +40,7 @@ export const Controls = props => {
 
   const handleFullscreenClick = (value) => {
     console.log('fullscreen');
+    setFullscreen(value);
     props.onFullscreenClick?.(value);
   };
 
