@@ -15,6 +15,7 @@ export const Controls = props => {
   const [play, setPlay] = useState(false);
   const [subtitles, setSubtitles] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  const [connect, setConnect] = useState(false);
 
   const handleInput = value => {
     console.log('input', value);
@@ -44,8 +45,9 @@ export const Controls = props => {
     props.onFullscreenClick?.(value);
   };
 
-  const handleConnectClick = () => {
+  const handleConnectClick = (value) => {
     console.log('connect');
+    setConnect(value);
     props.onConnectClick?.();
   };
 
