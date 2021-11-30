@@ -48,7 +48,7 @@ export const Controls = props => {
   const handleConnectClick = (value) => {
     console.log('connect');
     setConnect(value);
-    props.onConnectClick?.();
+    props.onConnectClick?.(value);
   };
 
   return (
