@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { socketConnect } from '../../services';
+import { Controls } from './Controls';
 const mediaUrl = process.env.REACT_APP_MEDIA_URL;
 
 const Container = styled.div`
@@ -83,6 +84,9 @@ export const Video = (props) => {
   return (
     <Container>
       <div className="video">
+        <Controls
+          
+        />
         <video
           controls
           ref={videoRef}
