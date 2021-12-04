@@ -86,6 +86,7 @@ export const Video = (props) => {
       <div className="video">
         <Controls
           currentTime={videoRef.current.currentTime}
+          duration={videoRef.current.duration}
         />
         <video
           controls
