@@ -81,12 +81,17 @@ export const Video = (props) => {
     socket.current?.emit('seeked', videoRef.current.currentTime);
   };
 
+  const handleProgressInput = (value) => {
+
+  };
+
   return (
     <Container>
       <div className="video">
         <Controls
           currentTime={videoRef.current.currentTime}
           duration={videoRef.current.duration}
+          onProgressInput={handleProgressInput}
         />
         <video
           controls
