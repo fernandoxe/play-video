@@ -85,6 +85,10 @@ export const Video = (props) => {
 
   };
 
+  const handleProgressChange = (value) => {
+
+  };
+
   return (
     <Container>
       <div className="video">
@@ -92,6 +96,7 @@ export const Video = (props) => {
           currentTime={videoRef.current.currentTime}
           duration={videoRef.current.duration}
           onProgressInput={handleProgressInput}
+          handleProgressChange={handleProgressChange}
         />
         <video
           controls
