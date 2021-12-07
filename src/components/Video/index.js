@@ -96,7 +96,7 @@ export const Video = (props) => {
           currentTime={videoRef.current.currentTime}
           duration={videoRef.current.duration}
           onProgressInput={handleProgressInput}
-          handleProgressChange={handleProgressChange}
+          onProgressChange={handleProgressChange}
         />
         <video
           controls
