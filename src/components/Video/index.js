@@ -93,6 +93,10 @@ export const Video = (props) => {
 
   };
 
+  const handleSubtitlesClick = (value) => {
+
+  };
+
   return (
     <Container>
       <div className="video">
@@ -102,6 +106,7 @@ export const Video = (props) => {
           onProgressInput={handleProgressInput}
           onProgressChange={handleProgressChange}
           onPlay={handlePlay}
+          onSubtitlesClick={handleSubtitlesClick}
         />
         <video
           controls
