@@ -97,6 +97,10 @@ export const Video = (props) => {
 
   };
 
+  const handleFullscreenClick = (value) => {
+
+  };
+
   return (
     <Container>
       <div className="video">
@@ -107,6 +111,7 @@ export const Video = (props) => {
           onProgressChange={handleProgressChange}
           onPlay={handlePlay}
           onSubtitlesClick={handleSubtitlesClick}
+          onFullscreenClick={handleFullscreenClick}
         />
         <video
           controls
