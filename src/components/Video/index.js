@@ -101,6 +101,10 @@ export const Video = (props) => {
 
   };
 
+  const handleConnectClick = (value) => {
+    
+  };
+
   return (
     <Container>
       <div className="video">
@@ -112,6 +116,7 @@ export const Video = (props) => {
           onPlay={handlePlay}
           onSubtitlesClick={handleSubtitlesClick}
           onFullscreenClick={handleFullscreenClick}
+          onConnectClick={handleConnectClick}
         />
         <video
           controls
