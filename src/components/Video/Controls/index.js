@@ -6,7 +6,12 @@ import { Play } from './Play';
 import { Timer } from './Timer';
 
 const Container = styled.div`
-  
+  .connect {
+    color: gray;
+    &--connected {
+      color: purple;
+    }
+  }
 `;
 
 export const Controls = props => {
@@ -55,7 +60,7 @@ export const Controls = props => {
     <Container>
       <Play onClick={handlePlay} />
       <Timer currentTime={currentTime} duration={duration} />
-      <button className="connect" onClick={handleConnectClick}>
+      <button className={`connect ${connect ? '--connected': ''}`} onClick={handleConnectClick}>
         <i className="material-icons">people</i>
       </button>
       <button className="subtitles" onClick={handleSubtitlesClick}>
