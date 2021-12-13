@@ -12,6 +12,12 @@ const Container = styled.div`
       color: purple;
     }
   }
+
+  .subtitles {
+    &--active {
+      
+    }
+  }
 `;
 
 export const Controls = props => {
@@ -63,7 +69,7 @@ export const Controls = props => {
       <button className={`connect ${connect ? '--connected': ''}`} onClick={handleConnectClick}>
         <i className="material-icons">people</i>
       </button>
-      <button className="subtitles" onClick={handleSubtitlesClick}>
+      <button className={`subtitles ${subtitles ? '--active' : ''}`} onClick={handleSubtitlesClick}>
         <i className="material-icons">subtitles</i>
       </button>
       <button className="fullscreen" onClick={handleFullscreenClick}>
