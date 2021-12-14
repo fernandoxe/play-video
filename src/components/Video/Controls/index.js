@@ -73,7 +73,11 @@ export const Controls = props => {
         <i className="material-icons">subtitles</i>
       </button>
       <button className="fullscreen" onClick={handleFullscreenClick}>
-        <i className="material-icons">fullscreen</i>
+        {fullscreen ?
+          <i className="material-icons">fullscreen</i>
+          :
+          <i className="material-icons">fullscreen</i>
+        }
       </button>
       <Progress
         min={0}
