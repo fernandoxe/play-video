@@ -76,7 +76,7 @@ export const Controls = props => {
         {fullscreen ?
           <i className="material-icons">fullscreen</i>
           :
-          <i className="material-icons">fullscreen</i>
+          <i className="material-icons">fullscreen_exit</i>
         }
       </button>
       <Progress
