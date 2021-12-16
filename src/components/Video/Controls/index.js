@@ -29,35 +29,29 @@ export const Controls = props => {
   const [connect, setConnect] = useState(false);
 
   const handleInput = value => {
-    console.log('input', value);
     props.onProgressInput?.(value);
   };
 
   const handleChange = value => {
-    console.log('change', value);
     props.onProgressChange?.(value);
   };
 
   const handlePlay = value => {
-    console.log('play', value);
     setPlay(value);
     props.onPlay?.(value);
   };
 
   const handleSubtitlesClick = (value) => {
-    console.log('subtitles');
     setSubtitles(value);
     props.onSubtitleClick(value);
   };
 
   const handleFullscreenClick = (value) => {
-    console.log('fullscreen');
     setFullscreen(value);
     props.onFullscreenClick?.(value);
   };
 
   const handleConnectClick = (value) => {
-    console.log('connect');
     setConnect(value);
     props.onConnectClick?.(value);
   };
