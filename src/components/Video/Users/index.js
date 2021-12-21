@@ -4,21 +4,16 @@ const Container = styled.div`
 `;
 
 export const Users = props => {
+  const { users } = props;
+
   return (
     <Container>
       <ul>
-        <li>
-          Username 0
-        </li>
-        <li>
-          Username 1
-        </li>
-        <li>
-          Username 2
-        </li>
-        <li>
-          Username 3
-        </li>
+        {users.map(user =>
+          <li key={user}>
+            {user}
+          </li>
+        )}
       </ul>
     </Container>
   );
