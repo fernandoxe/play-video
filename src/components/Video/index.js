@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { socketConnect } from '../../services';
 import { Controls } from './Controls';
+import { Users } from './Users';
 const mediaUrl = process.env.REACT_APP_MEDIA_URL;
 
 const Container = styled.div`
@@ -108,6 +109,7 @@ export const Video = (props) => {
   return (
     <Container>
       <div className="video">
+        <Users />
         <Controls
           currentTime={videoRef.current.currentTime}
           duration={videoRef.current.duration}
