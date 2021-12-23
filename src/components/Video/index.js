@@ -53,6 +53,10 @@ export const Video = (props) => {
       console.log('seek at', time);
       changeTime(time);
     });
+
+    socket.current.on('users', users => {
+      console.log(users);
+    })
   }, []);
 
   const pause = () => {
