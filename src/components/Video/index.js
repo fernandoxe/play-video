@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { socketConnect } from '../../services';
 import { Controls } from './Controls';
@@ -35,6 +35,7 @@ export const Video = (props) => {
   const { name } = props;
   const videoRef = useRef(null);
   const socket = useRef(null);
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
     socket.current = socketConnect();
@@ -56,6 +57,7 @@ export const Video = (props) => {
 
     socket.current.on('users', users => {
       console.log(users);
+      setUsers(users);
     })
   }, []);
 
@@ -113,7 +115,7 @@ export const Video = (props) => {
   return (
     <Container>
       <div className="video">
-        <Users />
+        <Users users={users} />
         <Controls
           currentTime={videoRef.current.currentTime}
           duration={videoRef.current.duration}
