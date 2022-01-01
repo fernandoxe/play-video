@@ -18,7 +18,7 @@ export const getSeasons = (seriesName) => {
 };
 
 export const socketConnect = () => {
-  return io('https://play-video-server.herokuapp.com/');
+  return io(process.env.REACT_APP_SERVER_URL);
 };
 
 export const secondsToTime = (seconds) => {
