@@ -327,7 +327,7 @@ export const Video = (props) => {
           onTimeUpdate={handleTimeUpdate}
           onWaiting={handleWaiting}
           onPlaying={handlePlaying}
-          // crossOrigin="anonymous"
+          crossOrigin="anonymous"
         >
           <source src={`${mediaUrl}/media/${name}.mp4`} type="video/mp4" />
           <track src={`${mediaUrl}/media/${name}.vtt`} default kind="subtitles" srcLang="es"/>
