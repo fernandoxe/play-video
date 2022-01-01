@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
+  height: 16px;
+  display: flex;
+  align-items: center;
 
   .range {
     width: 100%;
@@ -16,7 +19,7 @@ const Container = styled.div`
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background-color: gray;
+      background-color: #7C4DFF;
       cursor: pointer;
     }
 
@@ -25,7 +28,7 @@ const Container = styled.div`
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background-color: gray;
+      background-color: #7C4DFF;
       cursor: pointer;
     }
   }
@@ -37,48 +40,60 @@ const Container = styled.div`
 
   .rail {
     width: 100%;
-    background-color: lightgray;
+    background-color: #dddddd;
   }
 
   .progress {
-    background-color: purple;
+    background-color: #9C27B0;
   }
 `;
 
 export const Progress = props => {
-  const rangeRef = useRef(null)
-  const [progress, setProgress] = useState(0);
+  const rangeRef = useRef(null);
+  // const [progress, setProgress] = useState(props.value);
 
   const handleChange = (event) => {
+    // setProgress(event.target.value);
     props.onChange?.(event.target.value);
+    // console.log('change react (release?)', event.target.value);
   };
 
-  const handleInput = (event) => {
-    setProgress(event.target.value);
-    props.onInput?.(event.target.value);
-  };
-
+  // const handleInput = (event) => {
+  //   setProgress(event.target.value);
+  //   // props.onChangeUp?.(event.target.value);
+  //   console.log('input react (dragging)', event.target.value);
+  // };
+  
   useEffect(() => {
-    console.log('add listeners');
-    const inputRange = rangeRef.current; // copy current ref to use the same in remove listeners
-    inputRange.addEventListener('change', handleChange);
-    inputRange.addEventListener('input', handleInput);
-    return () => {
-      console.log('remove listeners');
-      inputRange.removeEventListener('change', handleChange);
-      inputRange.removeEventListener('input', handleInput);
-    };
-  }, []);
+    // setProgress(props.value);
 
+    const handleChangeUp = (event) => {
+      // setProgress(event.target.value);
+      props.onChangeUp?.(event.target.value);
+      console.log('change (release)', event.target.value);
+    };
+
+    // console.log('add listeners');
+    const inputRange = rangeRef.current; // copy current ref to use the same in remove listeners
+    inputRange.addEventListener('change', handleChangeUp);
+    // inputRange.addEventListener('input', handleInput);
+    return () => {
+      // console.log('remove listeners');
+      inputRange.removeEventListener('change', handleChangeUp);
+      // inputRange.removeEventListener('input', handleInput);
+    };
+  }, [props]);
+  
   return (
     <Container>
       <div className="rail"></div>
-      <div className="progress" style={{width: `${progress * 100 / props.max}%`}}></div>
+      <div className="progress" style={{width: `${props.value * 100 / props.max}%`}}></div>
       <input
         type="range"
         className="range"
         ref={rangeRef}
-        value={progress}
+        value={props.value}
+        onChange={handleChange}
         min={props.min}
         max={props.max}
       />
