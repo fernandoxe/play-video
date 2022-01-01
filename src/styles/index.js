@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
+    user-select: none;
   }
 
   html, body, #root {
@@ -14,6 +15,12 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     background: #0b0b10;
     color: #dddddd;
+    font-family: 'Inria Sans', sans-serif;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
   }
 
   ul {
@@ -25,5 +32,9 @@ export const GlobalStyle = createGlobalStyle`
   a:link, a:visited {
     text-decoration: inherit;
     color: inherit;
+  }
+
+  button {
+    outline: none;
   }
 `;
