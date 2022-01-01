@@ -7,7 +7,6 @@ export const getMovie = (movieName) => {
 };
 
 export const getEpisode = (seriesName, seasonNumber, episodeNumber) => {
-  console.log('series', series);
   const season = series.find(s => s.name === seriesName && s.season === Number(seasonNumber));
   const episode = season.episodes[episodeNumber - 1];
   return episode;
