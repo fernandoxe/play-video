@@ -113,11 +113,11 @@ export const Video = (props) => {
 
   const handlePlay = (value) => {
     if(value) {
-      console.log('play at', videoRef.current.currentTime);
+      console.log('Play at', secondsToTime(videoRef.current.currentTime));
       socketEmit('play', { room: props.name, user: props.user, time: videoRef.current.currentTime });
       play();
     } else {
-      console.log('pause at', videoRef.current.currentTime, videoRef.current.paused);
+      console.log('Pause at', secondsToTime(videoRef.current.currentTime));
       socketEmit('pause', { room: props.name, user: props.user, time: videoRef.current.currentTime });
       pause();
     }
@@ -207,7 +207,7 @@ export const Video = (props) => {
         socketEmit('join', { room: props.name, user: props.user });
         setConnected(true);
         manualPingInterval.current = setInterval(() => {
-          console.log(`Sending ping at ${videoRef.current.currentTime}`);
+          console.log(`Sending ping at ${secondsToTime(videoRef.current.currentTime)}`);
           socketEmit('ping', { room: props.name, user: props.user, time: videoRef.current.currentTime });
         }, 1000 * 60 * 20);
       });
