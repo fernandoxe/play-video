@@ -85,6 +85,7 @@ export const Video = (props) => {
   const videoRef = useRef(null);
   const socket = useRef(null);
   const controlsTimeout = useRef(null);
+  const manualPingInterval = useRef(null);
   const [showControls, setShowControls] = useState(true);
   const [users, setUsers] = useState(null);
   const [currentTime, setCurrentTime] = useState(0);
@@ -205,10 +206,18 @@ export const Video = (props) => {
         console.log(`Connected as ${props.user}`);
         socketEmit('join', { room: props.name, user: props.user });
         setConnected(true);
+        manualPingInterval.current = setInterval(() => {
+          console.log(`Sending ping at ${videoRef.current.currentTime}`);
+          socketEmit('ping', { room: props.name, user: props.user, time: videoRef.current.currentTime });
+        }, 1000 * 60 * 20);
       });
       socket.current.on('disconnect', () => {
-        console.log('Disconnected from room, trying to reconnect...');
+        console.log(`Disconnected from room ${props.name}`);
+        clearInterval(manualPingInterval.current);
         setConnected(false);
+      });
+      socket.current.on('ping', (message) => {
+        console.log(`${message.user} sent ping at ${secondsToTime(message.time)}`);
       });
       socket.current.on('joined', message => {
         console.log(`${message.user} joined to room ${message.room}`);
