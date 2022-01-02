@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { secondsToTime, socketConnect } from '../../services';
@@ -90,8 +91,18 @@ export const Video = (props) => {
   const [loadedMetadata, setLoadedMetadata] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [connected, setConnected] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
   const [waiting, setWaiting] = useState(false);
   const touchEventRef = useRef(false);
+
+  useEffect(() => {
+    console.log('listener onfullscreenchange');
+    document.onfullscreenchange = () => {
+      const isFullscreen = !!document.fullscreenElement;
+      console.log(`fullscreen changed to ${isFullscreen}`);
+      setFullscreen(isFullscreen);
+    };
+  }, []);
 
   const pause = () => {
     videoRef.current.pause();
@@ -169,18 +180,21 @@ export const Video = (props) => {
     }
   };
 
-  const handleFullscreenClick = (fullscreen) => {
+  const handleFullscreenClick = () => {
     const fullscreenContainer = fullscreenContainerRef.current;
-    if(fullscreen) {
+    const isFullscreen = !!document.fullscreenElement;
+    if(!isFullscreen) {
+      setFullscreen(isFullscreen);
       if(fullscreenContainer.requestFullscreen) {
         fullscreenContainer.requestFullscreen({ navigationUI: 'hide' });
-      } else if(this.container.webkitRequestFullscreen) {
+      } else if(fullscreenContainer.webkitRequestFullscreen) {
         fullscreenContainer.webkitRequestFullscreen({ navigationUI: 'hide' });
-      } else if(this.container.mozRequestFullScreen){
+      } else if(fullscreenContainer.mozRequestFullScreen){
         fullscreenContainer.mozRequestFullScreen({ navigationUI: 'hide' });
       }
       window.screen.orientation.lock('landscape').catch(e => console.log(e));
     } else {
+      setFullscreen(!isFullscreen);
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
@@ -319,6 +333,7 @@ export const Video = (props) => {
                 playing={playing}
                 onSubtitlesClick={handleSubtitlesClick}
                 onFullscreenClick={handleFullscreenClick}
+                fullscreen={fullscreen}
                 onConnectClick={handleConnectClick}
                 connected={connected}
               />
