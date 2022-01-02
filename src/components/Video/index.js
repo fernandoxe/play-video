@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-// import { io } from 'socket.io-client';
 import styled from 'styled-components';
 import { secondsToTime, socketConnect } from '../../services';
 import { Controls } from './Controls';
@@ -15,7 +14,6 @@ const Container = styled.div`
   .video {
     position: relative;
     display: flex;
-    /* max-width: 100%; */
     max-height: 100%;
 
     video {
@@ -125,7 +123,6 @@ export const Video = (props) => {
 
   const handleProgressChange = (value) => {
     // console.log('change react from Video (dragging)', value);
-    // setCurrentTime(value);
     handleControlsClick(); // to activate de timer to show/hide controls
     changeTime(value);
   };
@@ -200,7 +197,6 @@ export const Video = (props) => {
       console.log('connecting...');
 
       socket.current = socketConnect();
-      // socket.current = io('http://localhost:5000/');
 
       socket.current.on('connect', () => {
         console.log(`Connected as ${props.user}`);
@@ -265,7 +261,6 @@ export const Video = (props) => {
   const handleTimeUpdate = () => {
     // console.log('time update', videoRef.current.currentTime);
     setCurrentTime(videoRef.current.currentTime);
-    // Math.floor(videoRef.current.currentTime) % 10 === 0 && console.log('ping', videoRef.current.currentTime);
   };
 
   const socketEmit = (message, data) => {
@@ -284,7 +279,7 @@ export const Video = (props) => {
     }
   };
 
-  const handleTouchStart = (event) => {
+  const handleTouchStart = () => {
     touchEventRef.current = true;
     // console.log('touch start', touchEventRef.current);
   };
