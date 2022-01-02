@@ -60,6 +60,13 @@ const Container = styled.div`
     }
   }
 
+  .fullscreen {
+    color: #dddddd;
+    &--active {
+      color: #7C4DFF;
+    }
+  }
+
   .subtitles {
     color: #dddddd;
     &--active {
@@ -70,7 +77,6 @@ const Container = styled.div`
 
 export const Controls = props => {
   const [subtitles, setSubtitles] = useState(true);
-  const [fullscreen, setFullscreen] = useState(false);
   const [connect, setConnect] = useState(false);
 
   const handleChangeUp = value => {
@@ -92,9 +98,7 @@ export const Controls = props => {
   };
 
   const handleFullscreenClick = () => {
-    const newFullscreen = !fullscreen;
-    setFullscreen(newFullscreen);
-    props.onFullscreenClick?.(newFullscreen);
+    props.onFullscreenClick?.();
   };
 
   const handleConnectClick = () => {
@@ -125,8 +129,8 @@ export const Controls = props => {
           <button className={`subtitles ${subtitles ? 'subtitles--active' : ''}`} onClick={handleSubtitlesClick}>
             <i className="material-icons">subtitles</i>
           </button>
-          <button className="fullscreen" onClick={handleFullscreenClick}>
-            <i className="material-icons">{fullscreen ? 'fullscreen_exit' : 'fullscreen'}</i>
+          <button className={`fullscreen ${props.fullscreen ? 'fullscreen--active' : ''}`} onClick={handleFullscreenClick}>
+            <i className="material-icons">{props.fullscreen ? 'fullscreen_exit' : 'fullscreen'}</i>
           </button>
         </div>
         <div className="progress-container">
