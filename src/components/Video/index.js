@@ -214,7 +214,7 @@ export const Video = (props) => {
 
       socket.current.on('connect', () => {
         console.log(`Connected as ${props.user}`);
-        socketEmit('join', { room: props.name, user: props.user });
+        socketEmit('join', { room: props.name, user: props.user, time: videoRef.current.currentTime });
         setConnected(true);
         manualPingInterval.current = setInterval(() => {
           console.log(`Sending ping at ${secondsToTime(videoRef.current.currentTime)}`);
@@ -230,7 +230,7 @@ export const Video = (props) => {
         console.log(`${message.user} sent ping at ${secondsToTime(message.time)}`);
       });
       socket.current.on('joined', message => {
-        console.log(`${message.user} joined to room ${message.room}`);
+        console.log(`${message.user} joined to room ${message.room} its time ${secondsToTime(message.time)}`);
         setUsers(message.users);
       });
       socket.current.on('left', message => {
