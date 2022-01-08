@@ -42,6 +42,7 @@ const Container = styled.div`
     padding: 0;
     margin: 0 8px;
     display: flex;
+    cursor: pointer;
     :first-child {
       margin-left: 0;
     }
