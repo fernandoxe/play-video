@@ -6,6 +6,7 @@ const Container = styled.div`
   .users-title {
     display: flex;
     align-items: center;
+    margin-bottom: 0.25rem;
     .material-icons {
       font-size: 1rem;
       color: #7C4DFF;
@@ -14,7 +15,7 @@ const Container = styled.div`
   }
 
   .users-name {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 `;
 
