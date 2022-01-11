@@ -6,6 +6,8 @@ import { Controls } from './Controls';
 import Loader from './Controls/Loader';
 import { Users } from './Users';
 const mediaUrl = process.env.REACT_APP_MEDIA_URL;
+// const intervalTime = 1000 * 60 * 20; // 20 min
+const intervalTime = 1000 * 10; // 10 seg
 
 const Container = styled.div`
   width: 100%;
@@ -216,19 +218,26 @@ export const Video = (props) => {
         console.log(`Connected as ${props.user}`);
         socketEmit('join', { room: props.name, user: props.user, time: videoRef.current.currentTime });
         setConnected(true);
-        manualPingInterval.current = setInterval(() => {
+        manualPingInterval.current = setInterval(async () => {
           console.log(`Sending ping at ${secondsToTime(videoRef.current.currentTime)}`);
-          socketEmit('ping', { room: props.name, user: props.user, time: videoRef.current.currentTime });
-        }, 1000 * 60 * 20);
+          // socketEmit('ping', { room: props.name, user: props.user, time: videoRef.current.currentTime });
+          try {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}ping`);
+            const data = await response.json();
+            console.log(`Response from ping, data ${data}`);
+          } catch(error) {
+            console.log(`Error from ping, error ${error}`);
+          }
+        }, intervalTime);
       });
       socket.current.on('disconnect', () => {
         console.log(`Disconnected from room ${props.name}`);
         clearInterval(manualPingInterval.current);
         setConnected(false);
       });
-      socket.current.on('ping', (message) => {
-        console.log(`${message.user} sent ping at ${secondsToTime(message.time)}`);
-      });
+      // socket.current.on('ping', (message) => {
+      //   console.log(`${message.user} sent ping at ${secondsToTime(message.time)}`);
+      // });
       socket.current.on('joined', message => {
         console.log(`${message.user} joined to room ${message.room} its time ${secondsToTime(message.time)}`);
         setUsers(message.users);
