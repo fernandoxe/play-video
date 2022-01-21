@@ -6,8 +6,8 @@ import { Controls } from './Controls';
 import Loader from './Controls/Loader';
 import { Users } from './Users';
 const mediaUrl = process.env.REACT_APP_MEDIA_URL;
-// const intervalTime = 1000 * 60 * 20; // 20 min
-const intervalTime = 1000 * 10; // 10 seg
+const intervalTime = 1000 * 60 * 20; // 20 min
+// const intervalTime = 1000 * 10; // 10 seg
 
 const Container = styled.div`
   width: 100%;
